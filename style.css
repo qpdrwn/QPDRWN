@@ -9,18 +9,25 @@ html {
 }
 
 body {
-    background: #0a0a0a;
-    color: #f5f5f5;
-    font-family: Arial, sans-serif;
+    background: #080808;
+    color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 6%;
-    border-bottom: 1px solid #222;
+    padding: 25px 5vw;
+    background: rgba(8, 8, 8, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1c1c1c;
 }
 
 .logo {
@@ -35,98 +42,110 @@ nav {
 }
 
 nav a {
-    color: #aaa;
+    color: #888;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: white;
+    color: #fff;
 }
 
 .hero {
-    min-height: 85vh;
-    padding: 12vh 6%;
+    min-height: 100vh;
+    padding: 180px 5vw 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .eyebrow {
-    color: #777;
-    font-size: 11px;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
 }
 
 h1 {
-    font-size: clamp(60px, 10vw, 150px);
-    line-height: .9;
-    letter-spacing: -6px;
-    max-width: 1000px;
+    font-size: clamp(65px, 11vw, 160px);
+    line-height: 0.86;
+    letter-spacing: -8px;
+    max-width: 1100px;
+    font-weight: 700;
 }
 
 .description {
-    max-width: 420px;
-    color: #999;
-    margin: 40px 0;
+    max-width: 430px;
+    color: #888;
+    margin: 45px 0;
+    font-size: 15px;
 }
 
 .button {
     display: inline-block;
     width: fit-content;
-    padding: 14px 24px;
-    border: 1px solid #555;
+    padding: 15px 25px;
+    border: 1px solid #444;
     color: white;
     text-decoration: none;
-    transition: .3s;
+    font-size: 13px;
+    transition: 0.3s;
 }
 
 .button:hover {
-    background: white;
-    color: black;
+    background: #fff;
+    color: #000;
 }
 
 .section {
-    padding: 120px 6%;
-    border-top: 1px solid #222;
+    padding: 140px 5vw;
+    border-top: 1px solid #1c1c1c;
 }
 
 h2 {
-    font-size: clamp(45px, 7vw, 90px);
-    letter-spacing: -4px;
-    margin-bottom: 70px;
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+    margin-bottom: 80px;
 }
 
 .projects {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 15px;
 }
 
 .project {
-    min-height: 350px;
+    min-height: 400px;
     padding: 30px;
-    background: #111;
-    border: 1px solid #222;
+    background: #101010;
+    border: 1px solid #202020;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    transition: 0.4s;
+}
+
+.project:hover {
+    background: #161616;
+    transform: translateY(-5px);
 }
 
 .project span {
-    color: #666;
+    color: #555;
     margin-bottom: auto;
+    font-size: 12px;
 }
 
 .project h3 {
-    font-size: 25px;
+    font-size: 24px;
     margin-bottom: 8px;
 }
 
 .project p {
-    color: #777;
-    font-size: 13px;
+    color: #666;
+    font-size: 12px;
 }
 
 .service-list {
@@ -134,15 +153,20 @@ h2 {
 }
 
 .service-list div {
-    padding: 25px 0;
+    padding: 30px 0;
     border-bottom: 1px solid #333;
-    font-size: 25px;
+    font-size: clamp(24px, 4vw, 45px);
+    transition: 0.3s;
+}
+
+.service-list div:hover {
+    padding-left: 20px;
 }
 
 .contact {
-    padding: 150px 6%;
-    background: #f5f5f5;
-    color: #0a0a0a;
+    padding: 160px 5vw;
+    background: #f2f2f2;
+    color: #080808;
 }
 
 .contact .eyebrow {
@@ -150,31 +174,40 @@ h2 {
 }
 
 .contact .button {
-    color: black;
-    border-color: black;
+    color: #000;
+    border-color: #000;
 }
 
 .contact .button:hover {
-    background: black;
-    color: white;
+    background: #000;
+    color: #fff;
 }
 
 footer {
-    padding: 30px 6%;
+    padding: 30px 5vw;
     display: flex;
     justify-content: space-between;
-    color: #666;
-    font-size: 12px;
+    color: #555;
+    font-size: 11px;
 }
 
 @media (max-width: 700px) {
+
+    header {
+        padding: 20px 5vw;
+    }
 
     nav {
         display: none;
     }
 
+    .hero {
+        padding-top: 150px;
+    }
+
     h1 {
-        letter-spacing: -3px;
+        font-size: 65px;
+        letter-spacing: -4px;
     }
 
     .projects {
@@ -182,11 +215,15 @@ footer {
     }
 
     .project {
-        min-height: 250px;
+        min-height: 280px;
+    }
+
+    h2 {
+        letter-spacing: -3px;
     }
 
     footer {
         flex-direction: column;
         gap: 10px;
     }
-  }
+    }
