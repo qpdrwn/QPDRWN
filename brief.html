@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Project Brief | qpdrwn</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">qpdrwn</a>
+
+      <nav>
+        <a href="index.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="brief.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+
+        <p class="eyebrow">START A PROJECT</p>
+
+        <h1>Project Brief</h1>
+
+        <p>
+          Tell us about your project and what you want to create.
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="brief-section">
+      <div class="container">
+
+        <form class="brief-form">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="brand">Brand / Company</label>
+
+            <input
+              type="text"
+              id="brand"
+              name="brand"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="service">Service</label>
+
+            <select
+              id="service"
+              name="service"
+              required
+            >
+              <option value="">Select a service</option>
+              <option value="Logo Design">Logo Design</option>
+              <option value="Visual Identity">Visual Identity</option>
+              <option value="Logo Motion">Logo Motion</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="budget">Budget</label>
+
+            <select
+              id="budget"
+              name="budget"
+              required
+            >
+              <option value="">Select a budget</option>
+              <option value="Under $300">Under $300</option>
+              <option value="$300 - $600">$300 - $600</option>
+              <option value="$600 - $1,000">$600 - $1,000</option>
+              <option value="$1,000+">$1,000+</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="message">Project Details</label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="7"
+              placeholder="Tell us about your project..."
+              required
+            ></textarea>
+          </div>
+
+
+          <button type="submit">
+            Send Brief →
+          </button>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <p>© 2026 qpdrwn</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
