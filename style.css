@@ -226,4 +226,24 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+    .form-status {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: 1px solid currentColor;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-status.success {
+  color: #111;
+}
+
+.form-status.error {
+  color: #b00020;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
     }
+}
