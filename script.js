@@ -3,7 +3,7 @@ const form = document.querySelector(".brief-form");
 if (form) {
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
-
+    alert("submit works");
     const formData = new FormData(form);
 
     const data = {
