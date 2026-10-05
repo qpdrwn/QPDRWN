@@ -4,9 +4,7 @@ if (form) {
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const button = form.querySelector("button[type='submit']");
-
-    // Get the complete form, including the selected file
+   
     const formData = new FormData(form);
 
     // Disable button while sending
