@@ -12,7 +12,8 @@ if (form) {
       email: formData.get("email"),
       service: formData.get("service"),
       budget: formData.get("budget"),
-      message: formData.get("message")
+      message: formData.get("message"),
+      file: fromData.get("file")
     };
 
     try {
