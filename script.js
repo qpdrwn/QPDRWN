@@ -4,27 +4,21 @@ if (form) {
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
+    const button = form.querySelector("button[type='submit']");
+
+    // Get the complete form, including the selected file
     const formData = new FormData(form);
 
-    const data = {
-      name: formData.get("name"),
-      brand: formData.get("brand"),
-      email: formData.get("email"),
-      service: formData.get("service"),
-      budget: formData.get("budget"),
-      message: formData.get("message"),
-      file: fromData.get("file")
-    };
+    // Disable button while sending
+    button.disabled = true;
+    button.textContent = "Sending...";
 
     try {
       const response = await fetch(
         "https://qpdrwn-telegram.ghm-ce7.workers.dev/",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
+          body: formData
         }
       );
 
@@ -34,13 +28,27 @@ if (form) {
         alert("Your project brief has been sent successfully.");
         form.reset();
       } else {
-        alert("Something went wrong. Please try again.");
+        alert(
+          result.error ||
+          "Something went wrong. Please try again."
+        );
+
         console.error(result);
       }
 
     } catch (error) {
+
       console.error(error);
-      alert("Connection error. Please try again.");
+
+      alert(
+        "Connection error. Please try again."
+      );
+
+    } finally {
+
+      button.disabled = false;
+      button.textContent = "Send Brief →";
+
     }
   });
 }
