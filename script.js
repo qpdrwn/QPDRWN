@@ -75,7 +75,7 @@ if (form && submitButton && submitLabel) {
         throw new Error('The server returned an unexpected response. Please try again later.');
       }
 
-      if (!response.ok || !result.ok) {
+      if (!response.ok || !result.success) {
         throw new Error(result.error || 'Your brief could not be sent. Please try again.');
       }
 
