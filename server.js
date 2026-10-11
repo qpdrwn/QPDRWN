@@ -31,7 +31,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
 
     if (!name || !brand || !email || !service || !budget || !message) {
       return res.status(400).json({
-        success: false,
+        ok: false,
         message: "Please complete all required fields."
       });
     }
