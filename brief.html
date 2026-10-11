@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="description" content="Tell qpdrwn about your next branding, logo design, or motion project.">
+  <title>Project Brief — qpdrwn</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="qpdrwn home">qpdrwn<span class="logo-dot">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="brief.html" aria-current="page">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> START A PROJECT</p>
+          <h1>Good work<br>starts <span>here.</span></h1>
+          <p class="hero-description">Have an idea taking shape? Tell us what you’re building, what you need, and where you want to take it.</p>
+        </div>
+        <aside class="hero-note" aria-label="Brief information">
+          <span class="note-number">01 / 03</span>
+          <div class="note-line"></div>
+          <p>A few details now help us make the first conversation count.</p>
+          <span class="note-caption">PROJECT INQUIRY · 2026</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="brief-section" aria-labelledby="form-heading">
+      <div class="container brief-layout">
+        <div class="form-intro">
+          <p class="section-index">THE ESSENTIALS</p>
+          <h2 id="form-heading">Project<br>brief<span>.</span></h2>
+          <p>Share the basics below. We’ll use your brief to understand your goals and get back to you about the next steps.</p>
+          <div class="response-note"><span class="response-icon" aria-hidden="true">↳</span><span>Every great collaboration starts with a conversation.</span></div>
+        </div>
+
+        <div class="form-panel">
+          <form class="brief-form" action="/api/brief" method="post" enctype="multipart/form-data">
+            <div class="form-topline"><span>PROJECT INQUIRY</span><span><span class="required-mark">*</span> REQUIRED FIELDS</span></div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Your name <span class="required-mark">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith" maxlength="120" required>
+              </div>
+
+              <div class="form-group">
+                <label for="brand">Brand / company <span class="required-mark">*</span></label>
+                <input type="text" id="brand" name="brand" autocomplete="organization" placeholder="Your brand name" maxlength="160" required>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="email">Email address <span class="required-mark">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" maxlength="254" required>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service <span class="required-mark">*</span></label>
+                <div class="select-wrap">
+                  <select id="service" name="service" required>
+                    <option value="" selected disabled>Select a service</option>
+                    <option value="Logo Design">Logo Design</option>
+                    <option value="Visual Identity">Visual Identity</option>
+                    <option value="Logo Motion">Logo Motion</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="budget">Estimated budget <span class="required-mark">*</span></label>
+                <div class="select-wrap">
+                  <select id="budget" name="budget" required>
+                    <option value="" selected disabled>Select a budget</option>
+                    <option value="Under $300">Under $300</option>
+                    <option value="$300 - $600">$300 – $600</option>
+                    <option value="$600 - $1,000">$600 – $1,000</option>
+                    <option value="$1,000+">$1,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="message">Tell us about the project <span class="required-mark">*</span></label>
+                <textarea id="message" name="message" rows="6" maxlength="3000" placeholder="What are you creating? What goals, ideas, or deadlines should we know about?" required></textarea>
+                <div class="field-footnote"><span>More context helps us give you a better answer.</span><span id="message-count">0 / 3000</span></div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="file">Attachments <span class="optional-label">OPTIONAL</span></label>
+                <input class="visually-hidden" type="file" id="file" name="file" accept=".jpg,.jpeg,.png,.pdf,.svg,.ai,.psd">
+                <label class="file-picker" for="file">
+                  <span class="file-icon" aria-hidden="true">↑</span>
+                  <span class="file-picker-copy"><strong id="file-name">Choose a file to attach</strong><small>JPG, PNG, PDF, SVG, AI or PSD · Up to 10 MB</small></span>
+                  <span class="file-browse">Browse files</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Honeypot field: leave empty; helps filter basic automated spam. -->
+            <div class="honeypot" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-bottom">
+              <p class="privacy-note">Your details are used only to respond to this inquiry.</p>
+              <button class="submit-button" type="submit"><span>Send project brief</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo">qpdrwn<span class="logo-dot">.</span></a>
+      <p>Independent design for ideas in motion.</p>
+      <span>© <span id="year">2026</span> qpdrwn</span>
+    </div>
+  </footer>
+</body>
+</html>
