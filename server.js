@@ -106,7 +106,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
     console.error("Brief submission error:", error.message);
 
     return res.status(500).json({
-      success: false,
+      ok: false,
       message: "Unable to send your brief. Please try again."
     });
   } finally {
@@ -119,7 +119,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
 app.use((error, req, res, next) => {
   if (error instanceof multer.MulterError) {
     return res.status(400).json({
-      success: false,
+      ok: false,
       message: "The uploaded file may be too large."
     });
   }
@@ -127,7 +127,7 @@ app.use((error, req, res, next) => {
   console.error(error.message);
 
   return res.status(500).json({
-    success: false,
+    ok: false,
     message: "An unexpected error occurred."
   });
 });
