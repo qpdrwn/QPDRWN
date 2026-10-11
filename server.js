@@ -99,7 +99,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
     }
 
     return res.json({
-      success: true,
+      ok: true,
       message: "Your project brief has been sent successfully."
     });
   } catch (error) {
