@@ -1,45 +1,93 @@
-const form = document.querySelector(".brief-form");
+'use strict';
 
-if (form) {
-  form.addEventListener("submit", async function (event) {
+const form = document.querySelector('.brief-form');
+const statusBox = document.querySelector('#form-status');
+const submitButton = form?.querySelector('.submit-button');
+const submitLabel = submitButton?.querySelector('span:first-child');
+const fileInput = document.querySelector('#file');
+const fileName = document.querySelector('#file-name');
+const messageInput = document.querySelector('#message');
+const messageCount = document.querySelector('#message-count');
+const year = document.querySelector('#year');
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+if (year) year.textContent = String(new Date().getFullYear());
+
+function showStatus(message, type) {
+  if (!statusBox) return;
+  statusBox.textContent = message;
+  statusBox.className = `form-status is-visible is-${type}`;
+}
+
+function clearStatus() {
+  if (!statusBox) return;
+  statusBox.textContent = '';
+  statusBox.className = 'form-status';
+}
+
+if (fileInput && fileName) {
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files?.[0];
+    fileName.textContent = file ? file.name : 'Choose a file to attach';
+    clearStatus();
+    if (file && file.size > MAX_FILE_SIZE) {
+      fileInput.value = '';
+      fileName.textContent = 'Choose a file to attach';
+      showStatus('That file is larger than 10 MB. Please choose a smaller file.', 'error');
+    }
+  });
+}
+
+if (messageInput && messageCount) {
+  const updateCount = () => { messageCount.textContent = `${messageInput.value.length} / 3000`; };
+  messageInput.addEventListener('input', updateCount);
+  updateCount();
+}
+
+if (form && submitButton && submitLabel) {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    alert("submit works");
-    const formData = new FormData(form);
+    clearStatus();
 
-    const data = {
-      name: formData.get("name"),
-      brand: formData.get("brand"),
-      email: formData.get("email"),
-      service: formData.get("service"),
-      budget: formData.get("budget"),
-      message: formData.get("message")
-    };
+    if (!form.reportValidity()) return;
+
+    const attachment = fileInput?.files?.[0];
+    if (attachment && attachment.size > MAX_FILE_SIZE) {
+      showStatus('That file is larger than 10 MB. Please choose a smaller file.', 'error');
+      return;
+    }
+
+    const originalLabel = 'Send project brief';
+    submitButton.disabled = true;
+    submitLabel.textContent = 'Sending brief…';
 
     try {
-      const response = await fetch(
-        "https://qpdrwn-telegram.ghm-ce7.workers.dev/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        }
-      );
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
 
-      const result = await response.json();
-
-      if (result.success) {
-        alert("Your project brief has been sent successfully.");
-        form.reset();
-      } else {
-        alert("Something went wrong. Please try again.");
-        console.error(result);
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error('The server returned an unexpected response. Please try again later.');
       }
 
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'Your brief could not be sent. Please try again.');
+      }
+
+      form.reset();
+      if (fileName) fileName.textContent = 'Choose a file to attach';
+      if (messageCount) messageCount.textContent = '0 / 3000';
+      showStatus(result.warning || 'Thanks — your project brief has been sent. We’ll be in touch soon.', result.warning ? 'error' : 'success');
     } catch (error) {
-      console.error(error);
-      alert("Connection error. Please try again.");
+      showStatus(error instanceof Error ? error.message : 'Something went wrong. Please try again.', 'error');
+    } finally {
+      submitButton.disabled = false;
+      submitLabel.textContent = originalLabel;
     }
   });
 }
