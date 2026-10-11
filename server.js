@@ -41,7 +41,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
 
     if (!token || !chatId) {
       return res.status(500).json({
-        success: false,
+        ok: false,
         message: "Telegram is not configured."
       });
     }
