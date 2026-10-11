@@ -107,7 +107,7 @@ app.post("/api/brief", upload.single("file"), async (req, res) => {
 
     return res.status(500).json({
       ok: false,
-      message: "Unable to send your brief. Please try again."
+      error: "Unable to send your brief. Please try again."
     });
   } finally {
     if (uploadedFile) {
