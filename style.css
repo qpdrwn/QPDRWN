@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+css = """@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
   color-scheme: light;
@@ -153,3 +153,8 @@ textarea { min-height: 150px; resize: vertical; line-height: 1.8; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+"""
+path = "/mnt/data/style.css"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(css)
+print(f"Created corrected CSS file: {path}")
